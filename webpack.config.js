@@ -47,6 +47,12 @@ module.exports = {
           {
             loader: 'sass-loader',
           },
+          {
+            loader: 'sass-resources-loader',
+            options: {
+              resources: ['./src/assets/styles/variables.scss', './src/assets/styles/bootscwatch.scss'],
+            },
+          },
         ],
       },
     ],
