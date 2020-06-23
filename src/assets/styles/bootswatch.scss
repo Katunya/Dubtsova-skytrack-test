@@ -1,26 +1,204 @@
-// Superhero 4.3.1
+// Yeti 4.5.0
 // Bootswatch
 
 
 // Variables ===================================================================
 
-@import "https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap";
+$web-font-path: "https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,700italic,400,300,700&display=swap" !default;
+@import url($web-font-path);
 
 // Navbar ======================================================================
 
 .navbar {
   font-size: $font-size-sm;
+  font-weight: $headings-font-weight;
+}
+
+.bg-primary {
+
+  .dropdown-menu {
+    background-color: $primary;
+
+    .dropdown-item,
+    .dropdown-item:focus {
+      color: $navbar-dark-color;
+    }
+
+    .dropdown-item.active,
+    .dropdown-item:hover,
+    .dropdown-item:focus {
+      background-color: darken($primary, 5%);
+      color: #fff;
+    }
+  }
+}
+
+.bg-dark {
+  background-color: $gray-800 !important;
+
+  .dropdown-menu {
+    background-color: $gray-800;
+
+    .dropdown-item,
+    .dropdown-item:focus {
+      color: $navbar-dark-color;
+    }
+
+    .dropdown-item.active,
+    .dropdown-item:hover,
+    .dropdown-item:focus  {
+      background-color: darken($gray-800, 5%);
+      color: #fff;
+    }
+  }
+}
+
+.bg-light {
+
+  .dropdown-menu {
+    background-color: $gray-200;
+
+    .dropdown-item,
+    .dropdown-item:focus {
+      color: $navbar-light-color;
+    }
+
+    .dropdown-item.active,
+    .dropdown-item:hover,
+    .dropdown-item:focus  {
+      background-color: lighten($gray-200, 5%);
+      color: $navbar-light-hover-color;
+    }
+  }
 }
 
 // Buttons =====================================================================
 
 .btn {
-  @each $color, $value in $theme-colors {
-    &-#{$color} {
-      @if $enable-gradients {
-        background: $value linear-gradient(180deg, mix($white, $value, 15%), $value) repeat-x;
-      } @else {
-        background-color: $value;
+  &-primary {
+    border-color: darken($primary, 5%);
+  }
+
+  &-secondary {
+    border-color: darken($secondary, 5%);
+  }
+
+  &-success {
+    border-color: darken($success, 5%);
+  }
+
+  &-info {
+    border-color: darken($info, 5%);
+    color: $white;
+  }
+
+  &-danger {
+    border-color: darken($danger, 5%);
+  }
+
+  &-warning {
+    border-color: darken($warning, 5%);
+    color: $white;
+  }
+
+  &-light {
+    border-color: darken($light, 5%);
+  }
+
+  &-dark {
+    border-color: darken($dark, 5%);
+  }
+}
+
+.btn-group {
+
+  .dropdown-menu {
+    border-top-width: 0;
+  }
+
+  .dropdown-toggle {
+
+    &.btn-primary ~ .dropdown-menu {
+      background-color: $primary;
+      border-color: darken($primary, 5%);
+
+      .dropdown-item {
+        color: $white;
+      }
+
+      .dropdown-item:hover,
+      .dropdown-item:focus {
+        background-color: darken($primary, 8%);
+      }
+    }
+
+    &.btn-secondary ~ .dropdown-menu {
+      background-color: $secondary;
+      border-color: darken($secondary, 5%);
+
+      .dropdown-item {
+        color: $white;
+      }
+
+      .dropdown-item:hover,
+      .dropdown-item:focus {
+        background-color: darken($secondary, 8%);
+      }
+    }
+
+    &.btn-success ~ .dropdown-menu {
+      background-color: $success;
+      border-color: darken($success, 5%);
+
+      .dropdown-item {
+        color: $white;
+      }
+
+      .dropdown-item:hover,
+      .dropdown-item:focus {
+        background-color: darken($success, 8%);
+      }
+    }
+
+    &.btn-info ~ .dropdown-menu {
+      background-color: $info;
+      border-color: darken($info, 5%);
+
+      .dropdown-item {
+        color: $white;
+      }
+
+      .dropdown-item:hover,
+      .dropdown-item:focus {
+        background-color: darken($info, 8%);
+      }
+    }
+
+    &.btn-warning ~ .dropdown-menu {
+      background-color: $warning;
+      border-color: darken($warning, 5%);
+
+      .dropdown-item {
+        color: $white;
+      }
+
+      .dropdown-item:hover,
+      .dropdown-item:focus {
+        background-color: darken($warning, 8%);
+      }
+    }
+
+    &.btn-danger ~ .dropdown-menu {
+      background-color: $danger;
+      border-color: darken($primary, 5%);
+
+      .dropdown-item {
+        color: $white;
+      }
+
+      .dropdown-item:hover,
+      .dropdown-item:focus {
+        background-color: darken($danger, 8%);
       }
     }
   }
@@ -28,42 +206,27 @@
 
 // Typography ==================================================================
 
-.dropdown-menu {
-
-  font-size: $font-size-sm;
-}
-
-.dropdown-header {
-  font-size: $font-size-sm;
+.text-secondary {
+  color: $gray-700 !important;
 }
 
 .blockquote-footer {
-  color: $body-color;
+  color: $gray-600;
 }
 
 // Tables ======================================================================
 
-.table {
+table {
   font-size: $font-size-sm;
+}
 
-  .thead-dark th {
-    color: $white;
-  }
+.table {
 
-  a:not(.btn) {
-    color: #fff;
-    text-decoration: underline;
-  }
-
-  .dropdown-menu a {
-    text-decoration: none;
-  }
-
-  .text-muted {
-    color: $text-muted;
-  }
-
-  &-dark {
+  &-primary,
+  &-success,
+  &-info,
+  &-warning,
+  &-danger {
     color: #fff;
   }
 
@@ -183,66 +346,95 @@
 // Forms =======================================================================
 
 label,
-.radio label,
-.checkbox label,
-.help-block {
+.control-label,
+.help-block,
+.checkbox,
+.radio,
+.form-control-feedback {
   font-size: $font-size-sm;
 }
 
 // Navs ========================================================================
 
-.nav-tabs,
-.nav-pills {
+.dropdown-item {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  font-size: $font-size-sm;
+  font-weight: 300;
+}
+
+.nav-tabs {
   .nav-link,
-  .nav-link:hover {
-    color: $body-color;
+  .nav-link.disabled,
+  .nav-link.disabled:hover,
+  .nav-link.disabled:focus {
+    border-color: $nav-tabs-border-color;
+    background-color: $gray-200;
   }
 
-  .nav-link.disabled {
-    color: $nav-link-disabled-color;
+  .nav-link:hover,
+  .nav-link:focus {
+    background-color: lighten($gray-200, 5%);
   }
 }
 
-.page-link:hover,
-.page-link:focus {
-  color: #fff;
-  text-decoration: none;
+.nav-pills {
+  .active {
+    border: 1px solid darken($primary, 5%);
+  }
 }
 
-// Indicators ==================================================================
+.breadcrumb {
+  border: 1px solid $dropdown-border-color;
+  border-radius: 3px;
+  font-size: $font-size-sm;
+  font-weight: 300;
+  text-transform: uppercase;
+}
 
-.alert {
-  border: none;
-  color: $white;
+.pagination {
+  font-weight: 300;
 
-  a,
-  .alert-link {
-    color: #fff;
-    text-decoration: underline;
+  .page-link {
+    border-color: transparent;
+    border-radius: 3px;
+    margin-left: 0.1em;
+    margin-right: 0.1em;
+
+    &:hover,
+    &:focus {
+      text-decoration: none;
+    }
   }
 
-  @each $color, $value in $theme-colors {
-    &-#{$color} {
-      @if $enable-gradients {
-        background: $value linear-gradient(180deg, mix($white, $value, 15%), $value) repeat-x;
-      } @else {
-        background-color: $value;
-      }
+  .page-item.disabled {
+    .page-link {
+      border-color: transparent;
     }
   }
 }
 
-.badge {
-  &-warning,
-  &-info {
-    color: $white;
+.pagination,
+.pagination-lg,
+.pagination-sm {
+  .page-item:first-child,
+  .page-item:last-child {
+    .page-link {
+      border-radius: 3px;
+    }
   }
 }
 
+.list-group {
+  font-size: $font-size-sm;
+  font-weight: 300;
+}
+
+// Indicators ==================================================================
+
 .close {
-  color: #fff;
+  opacity: 0.6;
   text-shadow: none;
-  opacity: 0.5;
 
   &:hover,
   &:focus {
@@ -250,7 +442,94 @@ label,
   }
 }
 
+.alert {
+  font-size: $font-size-sm;
+  font-weight: 300;
+  color: $white;
+
+  &-primary {
+    &, > th, > td {
+      background-color: $primary;
+    }
+  }
+
+  &-secondary {
+    &, > th, > td {
+      background-color: $secondary;
+    }
+  }
+
+  &-success {
+    &, > th, > td {
+      background-color: $success;
+    }
+  }
+
+  &-info {
+    &, > th, > td {
+      background-color: $info;
+    }
+  }
+
+  &-danger {
+    &, > th, > td {
+      background-color: $danger;
+    }
+  }
+
+  &-warning {
+    &, > th, > td {
+      background-color: $warning;
+    }
+  }
+
+  &-dark {
+    &, > th, > td {
+      background-color: $dark;
+    }
+  }
+
+  &-light {
+    &, > th, > td {
+      background-color: $light;
+    }
+  }
+
+  .alert-link {
+    font-weight: normal;
+    color: #fff;
+    text-decoration: underline;
+  }
+
+  &-secondary,
+  &-light {
+    &,
+    & a:not(.btn),
+    & .alert-link {
+      color: $body-color;
+    }
+  }
+}
+
+.badge {
+  padding-bottom: .3em;
+
+  &-warning,
+  &-info {
+    color: $white;
+  }
+}
+
 // Progress bars ===============================================================
+
+.progress[value] {
+  height: 22px;
+  padding: 2px;
+  background-color: #f6f6f6;
+  border: 1px solid #ccc;
+  @include box-shadow(none);
+}
+
 
 // Popovers      ===============================================================
 
@@ -261,9 +540,3 @@ label,
 
 // Containers ==================================================================
 
-.modal {
-  &-header,
-  &-footer {
-    background-color: $table-hover-bg;
-  }
-}
