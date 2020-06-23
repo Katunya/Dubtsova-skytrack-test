@@ -4,7 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-  entry: ['./src/main.js'],
+  entry: ['./src/main.jsx'],
   context: path.resolve(__dirname),
   devtool: 'eval-source-map',
 
@@ -23,7 +23,7 @@ module.exports = {
     rules: [
       {
         test: /\.(js|jsx)?$/,
-        use: ['babel-loader'],
+        use: ['babel-loader','eslint-loader'],
         exclude: /node_modules/,
       },
       {
