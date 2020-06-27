@@ -4,7 +4,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-  entry: ['./src/main.js'],
+  entry: ['./src/index.js'],
   context: path.resolve(__dirname),
   devtool: 'eval-source-map',
 

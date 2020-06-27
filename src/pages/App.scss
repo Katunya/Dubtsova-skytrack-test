@@ -70,7 +70,12 @@ p {
 
 .text-center {
   padding: 20px;
+  .img-thumbnail {
+    margin: 10px;
+  }
 };
+
+
 
 .switch {
   &-wrapper {
