@@ -1,3 +1,4 @@
+
 const initialState = {
   current: {
     id: '',
@@ -8,6 +9,7 @@ const initialState = {
   history: [],
   loading: false,
   error: false,
+  currentPage: 1
 };
 
 export const reducer = (state = initialState, action) => {
@@ -23,33 +25,35 @@ export const reducer = (state = initialState, action) => {
         history: state.history,
         loading: true,
         error: false,
+        currentPage: 1
       };
     case 'REQUESTED_IMG_SUCCEEDED':
       let current = {
         id: action.data.id,
         image: action.data.image,
         title: action.data.title,
-        timeLoad: new Date()
+        timeLoad: new Date(),
       };
       return {
         current: current,
         history: state.history.concat([current]),
         loading: false,
         error: false,
+        currentPage: 1
       };
-    case 'DELETE_IMAGE':
-       {
-         let id = action.data;
-         let history = state.history;
-         let filteredImages = history.filter((item) => item.id !== id);
-         console.log(filteredImages);
-         return {
-           history: [...filteredImages],
-           current: '',
-           loading: false,
-           error: false,
-         }
+    case 'DELETE_IMAGE': {
+      let id = action.data;
+      let history = state.history;
+      let filteredImages = history.filter((item) => item.id !== id);
+      console.log(filteredImages);
+      return {
+        history: [...filteredImages],
+        current: '',
+        loading: false,
+        error: false,
+        currentPage: 1
       }
+    }
     case 'REQUESTED_IMG_FAILED':
       return {
         current: {
@@ -61,6 +65,7 @@ export const reducer = (state = initialState, action) => {
         history: state.history,
         loading: false,
         error: true,
+        currentPage: 1
       };
     default:
       return state;

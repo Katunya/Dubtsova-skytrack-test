@@ -1,8 +1,9 @@
 import React, {Component} from 'react'
-import { Container } from 'react-bootstrap'
-import {requestImg, requestImgSuccess} from "../../actions";
-import connect from "react-redux/lib/connect/connect";
-import ApiService from "../../api/api-services";
+import {Container} from 'react-bootstrap'
+import {requestImg, requestImgSuccess} from '../../actions';
+import connect from 'react-redux/lib/connect/connect';
+import ApiService from '../../api/api-services';
+import Spinner from '../../components/spinner';
 
 export class MainPage extends Component{
 
@@ -33,7 +34,11 @@ export class MainPage extends Component{
             type="button"
             className="btn btn-primary d-block mx-auto"
             onClick={this.updateImage}> Загрузить картинку </button>
-          <img className='img-thumbnail' src={this.props.current.image} title={this.props.current.title} alt="Random GIF"/>
+          <div className=''>
+            { this.props.loading
+            ? <Spinner/>
+            : <img className="img-thumbnail" src={this.props.current.image} title={this.props.current.title} alt="Random GIF"/>}
+          </div>
         </div>
       </Container>
     )

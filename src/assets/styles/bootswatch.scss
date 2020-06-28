@@ -46,7 +46,7 @@ $web-font-path: "https://fonts.googleapis.com/css?family=Open+Sans:300italic,400
 
     .dropdown-item.active,
     .dropdown-item:hover,
-    .dropdown-item:focus  {
+    .dropdown-item:focus {
       background-color: darken($gray-800, 5%);
       color: #fff;
     }
@@ -65,7 +65,7 @@ $web-font-path: "https://fonts.googleapis.com/css?family=Open+Sans:300italic,400
 
     .dropdown-item.active,
     .dropdown-item:hover,
-    .dropdown-item:focus  {
+    .dropdown-item:focus {
       background-color: lighten($gray-200, 5%);
       color: $navbar-light-hover-color;
     }
