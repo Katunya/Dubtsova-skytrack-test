@@ -11,6 +11,8 @@ export class HistoryPage extends Component {
   };
 
   render() {
+    const idxLastPhoto = this.props.currentPage * this.props.displayImage;
+    const idxFirstPhoto = idxLastPhoto - this.props.displayImage;
     return (
       <Container>
         <div className="row-custom-align">
@@ -23,16 +25,35 @@ export class HistoryPage extends Component {
             </div>
           )}
         </div>
+        <div>
+          <Paginator arrayImage = {this.props.history.length}
+                     displayImage = {this.props.displayImage}
+                     paginate = { this.props.history}
+          />
+        </div>
       </Container>
     )
   }
 }
+
+
+const Paginator = (({ arrayImage, displayImage, paginate }) => {
+  const pages = Array.from({ length: Math.ceil(arrayImage / displayImage) },
+    (_, i) => <li onClick={() => paginate(i + 1)} key={i}> {i + 1}</li>)
+  return (
+    <ul className="pagination">
+      {pages}
+    </ul>
+  )
+});
 
 const mapStateToProps = (state, ownProps) => {
   return {
     loading: state.loading,
     current: state.current,
     history: state.history,
+    displayImage: state.displayImage,
+    currentPage: state.currentPage
   }
 };
 

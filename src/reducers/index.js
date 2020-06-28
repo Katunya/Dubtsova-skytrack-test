@@ -9,7 +9,8 @@ const initialState = {
   history: [],
   loading: false,
   error: false,
-  currentPage: 1
+  currentPage: 1,
+  displayImage: 4
 };
 
 export const reducer = (state = initialState, action) => {
@@ -25,7 +26,8 @@ export const reducer = (state = initialState, action) => {
         history: state.history,
         loading: true,
         error: false,
-        currentPage: 1
+        currentPage: 1,
+        displayImage: 4
       };
     case 'REQUESTED_IMG_SUCCEEDED':
       let current = {
@@ -39,19 +41,20 @@ export const reducer = (state = initialState, action) => {
         history: state.history.concat([current]),
         loading: false,
         error: false,
-        currentPage: 1
+        currentPage: 1,
+        displayImage: 4
       };
     case 'DELETE_IMAGE': {
       let id = action.data;
       let history = state.history;
       let filteredImages = history.filter((item) => item.id !== id);
-      console.log(filteredImages);
       return {
         history: [...filteredImages],
         current: '',
         loading: false,
         error: false,
-        currentPage: 1
+        currentPage: 1,
+        displayImage: 4
       }
     }
     case 'REQUESTED_IMG_FAILED':
@@ -65,7 +68,8 @@ export const reducer = (state = initialState, action) => {
         history: state.history,
         loading: false,
         error: true,
-        currentPage: 1
+        currentPage: 1,
+        displayImage: 4
       };
     default:
       return state;

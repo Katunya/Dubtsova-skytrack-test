@@ -1,7 +1,9 @@
 import React from 'react';
 
 export const requestImg = () => {
-  return { type: "REQUESTED_IMG" }
+  return {
+    type: "REQUESTED_IMG"
+  }
 };
 
 export const requestImgSuccess = (data) => {

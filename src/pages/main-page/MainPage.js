@@ -18,7 +18,6 @@ export class MainPage extends Component{
   };
 
   updateImage = () => {
-    console.log('update');
     this.props.dispatch(requestImg());
     this.apiService
       .getResource()
