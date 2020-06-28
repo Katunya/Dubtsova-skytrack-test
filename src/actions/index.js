@@ -10,5 +10,11 @@ export const requestImgSuccess = (data) => {
     data: data
   }
 };
+export const deleteImg = (id) => {
+  return {
+    type: 'DELETE_IMAGE',
+    data: id
+  }
+};
 
 

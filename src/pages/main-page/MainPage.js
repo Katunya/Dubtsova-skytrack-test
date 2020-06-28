@@ -12,8 +12,8 @@ export class MainPage extends Component{
     this.updateImage();
   }
 
-  onLoadedImage = ({image, title}) => {
-    this.props.dispatch(requestImgSuccess({ image, title }));
+  onLoadedImage = ({ id, image, title }) => {
+    this.props.dispatch(requestImgSuccess({ id, image, title }));
   };
 
   updateImage = () => {
@@ -21,7 +21,7 @@ export class MainPage extends Component{
     this.props.dispatch(requestImg());
     this.apiService
       .getResource()
-      .then( (data) => ({ image: data.data.images.original.url, title: data.data.title}))
+      .then( (data) => ({ id: data.data.id, image: data.data.images.original.url, title: data.data.title}))
       .then(this.onLoadedImage)
 };
 
