@@ -15,9 +15,7 @@ const App = () => {
       <Header />
       <Switch>
         <Route path='/' exact component={MainPage}/>
-        <Route path='/history' component={HistoryPage}>
-          <div>History page</div>
-        </Route>
+        <Route path='/history' component={HistoryPage}/>
       </Switch>
     </ErrorBoundry>
     </Router>

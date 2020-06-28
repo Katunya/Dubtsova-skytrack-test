@@ -26,8 +26,6 @@ export class MainPage extends Component{
 };
 
   render () {
-    console.log('state = ',this.state);
-    console.log(this.props);
     return(
       <Container>
         <div className="text-center">
@@ -35,10 +33,8 @@ export class MainPage extends Component{
             type="button"
             className="btn btn-primary d-block mx-auto"
             onClick={this.updateImage}> Загрузить картинку </button>
-          {this.props.current.title}
-          <img className='img-thumbnail' src={this.props.current.image} alt="Random GIF"/>
+          <img className='img-thumbnail' src={this.props.current.image} title={this.props.current.title} alt="Random GIF"/>
         </div>
-
       </Container>
     )
   }
@@ -51,7 +47,5 @@ const mapStateToProps = (state, ownProps) => {
     history: state.history
   }
 };
-
-
 
 export default connect(mapStateToProps)(MainPage);
