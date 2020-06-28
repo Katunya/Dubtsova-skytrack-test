@@ -8,8 +8,8 @@ export class HistoryPage extends Component{
 
   itemPhoto = this.props.history.map(({ image, title }) => {
     return (
-      <div>
-            {title}
+      <div className='card mb-3'>
+        {title}
         <img src={image} title={title} />
       </div>
     )});
@@ -18,7 +18,9 @@ export class HistoryPage extends Component{
     console.log(this.props.history)
     return(
       <Container>
-        {this.itemPhoto}
+        <div className='row-custom-align'>
+          {this.itemPhoto}
+        </div>
       </Container>
     )
   }

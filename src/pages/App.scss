@@ -30,9 +30,11 @@ body {
 }
 
 .row-custom-align {
-  justify-content: left;
+  justify-content: center;
   align-items: center;
   margin: 0px auto;
+  width: 450px;
+  padding: 10px;
 
   @media (max-width: 770px) {
     & {
@@ -74,8 +76,6 @@ p {
     margin: 10px;
   }
 };
-
-
 
 .switch {
   &-wrapper {
