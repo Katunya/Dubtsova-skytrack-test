@@ -6,12 +6,3 @@ export default class ApiService {
     return await res.json();
   }
 }
-
-
-// const data  = data.result;
-// const { id, images,title } = data.data;
-// return {
-//   url: image_original_url,
-//   title,
-//   id
-// };

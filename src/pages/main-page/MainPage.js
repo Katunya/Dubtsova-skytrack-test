@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import { Container } from 'react-bootstrap'
-import { fetchImg } from "../../actions";
+import {requestImg, requestImgSuccess} from "../../actions";
 import connect from "react-redux/lib/connect/connect";
 import ApiService from "../../api/api-services";
 
@@ -8,40 +8,35 @@ export class MainPage extends Component{
 
   apiService = new ApiService();
 
-  state = {
-    image: '',
-    loading: true
-  };
-
   componentDidMount() {
     this.updateImage();
   }
 
-  onLoadedImage = (image) => {
-    this.setState({
-      image,
-      loading: false
-    });
+  onLoadedImage = ({image, title}) => {
+    this.props.dispatch(requestImgSuccess({ image, title }));
   };
 
   updateImage = () => {
     console.log('update');
+    this.props.dispatch(requestImg());
     this.apiService
       .getResource()
-      .then(data => data.data.images.original.url)
+      .then( (data) => ({ image: data.data.images.original.url, title: data.data.title}))
       .then(this.onLoadedImage)
 };
 
   render () {
-    console.log(this.props)
+    console.log('state = ',this.state);
+    console.log(this.props);
     return(
       <Container>
         <div className="text-center">
           <button
             type="button"
             className="btn btn-primary d-block mx-auto"
-            onClick={this.updateImage}>Загрузить картинку</button>
-          <img className='img-thumbnail' src={this.state.image} alt="Random GIF"/>
+            onClick={this.updateImage}> Загрузить картинку </button>
+          {this.props.current.title}
+          <img className='img-thumbnail' src={this.props.current.image} alt="Random GIF"/>
         </div>
 
       </Container>
@@ -49,12 +44,14 @@ export class MainPage extends Component{
   }
 }
 
-function mapStateToProps (state, ownProps) {
-  // console.log(state);
-  // console.log(ownProps);
+const mapStateToProps = (state, ownProps) => {
   return {
-    loading : state.loading
+    loading: state.loading,
+    current: state.current,
+    history: state.history
   }
-}
+};
+
+
 
 export default connect(mapStateToProps)(MainPage);
