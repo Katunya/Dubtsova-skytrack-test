@@ -11,8 +11,6 @@ export class HistoryPage extends Component {
   };
 
   render() {
-    const idxLastPhoto = this.props.currentPage * this.props.displayImage;
-    const idxFirstPhoto = idxLastPhoto - this.props.displayImage;
     return (
       <Container>
         <div className="row-custom-align">
