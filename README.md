@@ -27,9 +27,12 @@ https://api.giphy.com/v1/gifs/random?api_key=gR30u9O8KPOanwIQupHbD90d4k57EOeY
 Результат выложите на github.
 
 ## Available Scripts
+### `npm init `
+
+Initial project
 
 ### `npm run start`
 
-Runs the app<br>
+Run the app<br>
 Open [http://localhost:8181](http://localhost:8181) to view it in the browser.<br>
 
