@@ -2,8 +2,8 @@ import React, {Component} from 'react'
 import {Container} from 'react-bootstrap';
 import {deleteImg} from '../../actions';
 import connect from 'react-redux/lib/connect/connect';
-import {ImageView} from "../../components/image-view/image-view";
-import {Paginator} from "../../components/paginator/paginator";
+import {ImageView} from '../../components/image-view/image-view';
+import {Paginator} from '../../components/paginator/paginator';
 
 
 export class HistoryPage extends Component {
@@ -13,7 +13,6 @@ export class HistoryPage extends Component {
   };
 
   render() {
-
     return (
       <Container>
         <div className="row-custom-align">

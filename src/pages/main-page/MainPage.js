@@ -33,11 +33,9 @@ export class MainPage extends Component{
             type="button"
             className="btn btn-primary d-block mx-auto"
             onClick={this.updateImage}> Загрузить картинку </button>
-          <div className=''>
             { this.props.loading
             ? <Spinner/>
             : <img className="img-thumbnail" src={this.props.current.image} title={this.props.current.title} alt="Random GIF"/>}
-          </div>
         </div>
       </Container>
     )
