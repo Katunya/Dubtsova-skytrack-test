@@ -27,12 +27,18 @@ export const requestImgError = (error) => {
 };
 
 export const getAsyncImg = () => dispatch => {
-  getResource()
-    .then(data => dispatch(requestImgSuccess({
-    id: data.data.id,
-    image: data.data.images.original.url,
-    title: data.data.title,
-  })))
+  dispatch(requestImg());
+  try {
+    getResource()
+      .then(data => dispatch(requestImgSuccess({
+        id: data.data.id,
+        image: data.data.images.original.url,
+        title: data.data.title,
+      })))
+  }
+  catch (error) {
+    dispatch(requestImgError(error));
+  }
 };
 
 
