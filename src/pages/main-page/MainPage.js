@@ -1,41 +1,31 @@
 import React, {Component} from 'react'
 import {Container} from 'react-bootstrap'
-import {requestImg, requestImgSuccess} from '../../actions';
+import { getAsyncImg} from '../../actions';
 import connect from 'react-redux/lib/connect/connect';
-import ApiService from '../../api/api-services';
+
 import Spinner from '../../components/spinner';
 
-export class MainPage extends Component{
+export class MainPage extends Component {
 
-  apiService = new ApiService();
 
   componentDidMount() {
-    this.updateImage();
+    this.props.dispatch(getAsyncImg());
   }
 
-  onLoadedImage = ({ id, image, title }) => {
-    this.props.dispatch(requestImgSuccess({ id, image, title }));
-  };
 
   updateImage = () => {
-    this.props.dispatch(requestImg());
-    this.apiService
-      .getResource()
-      .then( (data) => ({ id: data.data.id, image: data.data.images.original.url, title: data.data.title}))
-      .then(this.onLoadedImage)
-};
+    this.props.dispatch(getAsyncImg());
+  };
 
-  render () {
-    return(
+  render() {
+    return (
       <Container>
         <div className="text-center">
-          <button
-            type="button"
-            className="btn btn-primary d-block mx-auto"
-            onClick={this.updateImage}> Загрузить картинку </button>
-            { this.props.loading
+          <button type="button" className="btn btn-primary d-block mx-auto" onClick={this.updateImage}> Загрузить картинку</button>
+          {this.props.loading
             ? <Spinner/>
-            : <img className="img-thumbnail" src={this.props.current.image} title={this.props.current.title} alt="Random GIF"/>}
+            :
+            <img className="img-thumbnail" src={this.props.current.image} title={this.props.current.title} alt="Random GIF"/>}
         </div>
       </Container>
     )
